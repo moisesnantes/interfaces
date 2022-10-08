@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import model.entities.CarRental;
 import model.entities.Vehicle;
+import model.services.BrazilTaxService;
+import model.services.RentalServices;
 
 public class Programam {
 
@@ -25,7 +27,15 @@ public class Programam {
 		
 		CarRental cr = new CarRental(start, finish, new Vehicle(carModel)); 
 		
+		System.out.print("Entre com o preço por hora: ");
+		double pricePerHour = sc.nextDouble();
+		System.out.print("Entre com o preço por dia: ");
+		double pricePerDay = sc.nextDouble();
 		
+		
+		RentalServices rentalService = new RentalServices(pricePerHour, pricePerDay, new BrazilTaxService());
+		
+		rentalService.processInvoice(cr);
 
 		sc.close();
 
