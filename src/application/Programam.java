@@ -36,6 +36,12 @@ public class Programam {
 		RentalServices rentalService = new RentalServices(pricePerHour, pricePerDay, new BrazilTaxService());
 		
 		rentalService.processInvoice(cr);
+		
+		
+		System.out.println("FATURA: ");
+		System.out.println("Pagamento básico: " + cr.getInvoice().getBasicPayment());
+		System.out.println("Imposto: " + cr.getInvoice().getTax());
+		System.out.println("Pagamento total: " + cr.getInvoice().getTotalPayment());
 
 		sc.close();
 
